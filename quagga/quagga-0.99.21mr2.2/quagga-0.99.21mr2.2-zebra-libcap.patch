@@ -1,0 +1,29 @@
+diff -Nrup quagga-0.99.21mr2.2.orig/zebra/Makefile.am quagga-0.99.21mr2.2/zebra/Makefile.am
+--- quagga-0.99.21mr2.2.orig/zebra/Makefile.am	2012-07-25 19:03:22.000000000 +0200
++++ quagga-0.99.21mr2.2/zebra/Makefile.am	2013-07-26 13:45:43.788103395 +0200
+@@ -50,9 +50,9 @@ if LIBNL
+ noinst_HEADERS += linkmetrics_netlink.h
+ endif
+ 
+-zebra_LDADD = $(otherobj) $(LIBCAP) $(LIB_IPV6) ../lib/libzebra.la $(LIBNL)
++zebra_LDADD = $(otherobj) $(LIB_IPV6) ../lib/libzebra.la $(LIBNL) $(LIBCAP)
+ 
+-testzebra_LDADD = $(LIBCAP) $(LIB_IPV6) ../lib/libzebra.la
++testzebra_LDADD = $(LIB_IPV6) ../lib/libzebra.la $(LIBCAP)
+ 
+ zebra_DEPENDENCIES = $(otherobj)
+ 
+diff -Nrup quagga-0.99.21mr2.2.orig/zebra/Makefile.in quagga-0.99.21mr2.2/zebra/Makefile.in
+--- quagga-0.99.21mr2.2.orig/zebra/Makefile.in	2012-07-25 19:09:11.000000000 +0200
++++ quagga-0.99.21mr2.2/zebra/Makefile.in	2013-07-26 13:46:00.320185375 +0200
+@@ -329,8 +329,8 @@ testzebra_SOURCES = test_main.c zebra_ri
+ noinst_HEADERS = connected.h ioctl.h rib.h rt.h zserv.h redistribute.h \
+ 	debug.h rtadv.h interface.h ipforward.h irdp.h router-id.h \
+ 	kernel_socket.h zserv_linkmetrics.h $(am__append_2)
+-zebra_LDADD = $(otherobj) $(LIBCAP) $(LIB_IPV6) ../lib/libzebra.la $(LIBNL)
+-testzebra_LDADD = $(LIBCAP) $(LIB_IPV6) ../lib/libzebra.la
++zebra_LDADD = $(otherobj) $(LIB_IPV6) ../lib/libzebra.la $(LIBNL) $(LIBCAP)
++testzebra_LDADD = $(LIB_IPV6) ../lib/libzebra.la $(LIBCAP)
+ zebra_DEPENDENCIES = $(otherobj)
+ EXTRA_DIST = if_ioctl.c if_ioctl_solaris.c if_netlink.c if_proc.c \
+         if_sysctl.c ipforward_aix.c ipforward_ews.c ipforward_proc.c \

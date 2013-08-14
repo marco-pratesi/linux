@@ -1,0 +1,36 @@
+--- quagga-init_d	2013-07-26 13:28:22.000000000 +0200
++++ quagga-mdr-init_d	2013-07-27 09:10:39.000000000 +0200
+@@ -13,9 +13,13 @@
+ ### END INIT INFO
+ #
+ 
++SUFFIX=-mdr
++PREFIX=/usr/local/quagga$SUFFIX
++
+ PATH=/bin:/usr/bin:/sbin:/usr/sbin
+-D_PATH=/usr/lib/quagga
+-C_PATH=/etc/quagga
++D_PATH=$PREFIX/sbin
++C_PATH=$PREFIX/etc
++#LD_LIBRARY_PATH=$PREFIX/lib:$LD_LIBRARY_PATH
+ 
+ # Local Daemon selection may be done by using /etc/quagga/daemons.
+ # See /usr/share/doc/quagga/README.Debian.gz for further information.
+@@ -40,7 +44,7 @@ vtysh_b ()
+ {
+ 	# Rember, that all variables have been incremented by 1 in convert_daemon_prios()
+ 	if [ "$vtysh_enable" = 2 -a -f $C_PATH/Quagga.conf ]; then
+-		/usr/bin/vtysh -b
++		$PREFIX/bin/vtysh -b
+ 	fi
+ }
+ 
+@@ -95,7 +99,7 @@ stop()
+     else
+ 	PIDFILE=`pidfile $1`
+ 	PID=`cat $PIDFILE 2>/dev/null`
+-	start-stop-daemon --stop --quiet --oknodo --exec "$D_PATH/$1"
++	start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE
+ 	#
+ 	#       Now we have to wait until $DAEMON has _really_ stopped.
+ 	#
