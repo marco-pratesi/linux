@@ -8,6 +8,11 @@ LOCALESTATEDIR=/var/run/quagga
 # extract quagga-0.99.21mr2.2.tar.gz and olsrd-0.6.5.4.tar.bz2;
 # cd quagga-0.99.21mr2.2
 
+# Some packages may need to be installed to successfully build the package:
+# on Ubuntu 12.04.x, gawk, libreadline6-dev, libpam0g-dev, and maybe others;
+# install them through either the apt-get command or a GUI package manager,
+# to automatically resolve dependencies.
+
 patch -p1 < ../misc/quagga-0.99.21mr2.2-zebra-libcap.patch
 patch -p1 < ../olsrd-0.6.5.4/lib/quagga/patches/quagga-0.99.21.diff #HUNK1 fails
 patch -p1 < ../misc/olsrd-quagga-0.99.21mr2.2-hunk1.patch
