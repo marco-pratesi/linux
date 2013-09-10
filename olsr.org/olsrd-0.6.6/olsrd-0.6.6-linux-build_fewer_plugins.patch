@@ -1,0 +1,13 @@
+diff -Nrup olsrd-0.6.6.orig/Makefile olsrd-0.6.6/Makefile
+--- olsrd-0.6.6.orig/Makefile	2013-08-17 11:03:40.000000000 +0200
++++ olsrd-0.6.6/Makefile	2013-09-10 19:25:04.361189979 +0200
+@@ -197,7 +197,8 @@ rpm:
+ 
+ # This is quite ugly but at least it works
+ ifeq ($(OS),linux)
+-SUBDIRS := arprefresh bmf dot_draw dyn_gw dyn_gw_plain httpinfo jsoninfo mdns mini nameservice p2pd pgraph pud quagga secure sgwdynspeed txtinfo watchdog
++#SUBDIRS := arprefresh bmf dot_draw dyn_gw dyn_gw_plain httpinfo jsoninfo mdns mini nameservice p2pd pgraph pud quagga secure sgwdynspeed txtinfo watchdog
++SUBDIRS := quagga txtinfo
+ else
+ ifeq ($(OS),win32)
+ SUBDIRS := dot_draw httpinfo jsoninfo mini pgraph secure txtinfo

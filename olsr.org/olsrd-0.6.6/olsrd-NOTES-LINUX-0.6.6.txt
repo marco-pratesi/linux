@@ -1,0 +1,17 @@
+
+tar xf olsrd-0.6.6.tar.bz2 ; cd olsrd-0.6.6
+
+Apply the following patches, available in this directory of this repository,
+through the "patch -p1 < ..." command:
+- olsrd-0.6.6-linux-build_fewer_plugins.patch
+- olsrd-0.6.6-linux-change_paths.patch
+
+make DEBUG=0
+strip olsrd
+make DEBUG=0 libs
+strip --strip-unneeded lib/quagga/olsrd_quagga.so.0.2.2
+strip --strip-unneeded lib/txtinfo/olsrd_txtinfo.so.0.1
+make install install_libs
+# Put olsrd.conf in /usr/local/etc/olsrd
+touch /usr/local/etc/olsrd/olsrd.conf
+

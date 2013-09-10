@@ -1,0 +1,36 @@
+diff -Nrup olsrd-0.6.6.orig/Makefile.inc olsrd-0.6.6/Makefile.inc
+--- olsrd-0.6.6.orig/Makefile.inc	2013-08-17 11:03:40.000000000 +0200
++++ olsrd-0.6.6/Makefile.inc	2013-09-10 19:28:59.866357783 +0200
+@@ -57,15 +57,15 @@ TAGCMD ?=	etags
+ 
+ # target directories and names
+ DESTDIR  ?=
+-ETCDIR   ?= $(DESTDIR)/etc
+-USRDIR   ?= $(DESTDIR)/usr
+-INCLUDEDIR ?= $(DESTDIR)/usr/include
++EXENAME  ?= olsrd
++USRDIR   ?= $(DESTDIR)/usr/local
++ETCDIR   ?= $(USRDIR)/etc/$(EXENAME)
++INCLUDEDIR ?= $(USRDIR)/include
+ LIBDIR   ?= $(USRDIR)/lib
+ SBINDIR  ?= $(USRDIR)/sbin
+ SHAREDIR ?= $(USRDIR)/share
+ DOCDIR   ?= $(SHAREDIR)/doc
+-MANDIR   ?= $(SHAREDIR)/man
+-EXENAME  ?= olsrd
++MANDIR   ?= $(USRDIR)/man
+ CFGNAME  ?= $(EXENAME).conf
+ CFGFILE  ?= $(ETCDIR)/$(CFGNAME)
+ SGW_POLICY_SCRIPT ?= sgw_policy_routing_setup.sh
+diff -Nrup olsrd-0.6.6.orig/src/defs.h olsrd-0.6.6/src/defs.h
+--- olsrd-0.6.6.orig/src/defs.h	2013-08-17 11:03:40.000000000 +0200
++++ olsrd-0.6.6/src/defs.h	2013-09-10 19:28:59.866357783 +0200
+@@ -58,7 +58,7 @@
+ 
+ #ifndef OLSRD_GLOBAL_CONF_FILE
+ #define OLSRD_CONF_FILE_NAME	"olsrd.conf"
+-#define OLSRD_GLOBAL_CONF_FILE	"/etc/" OLSRD_CONF_FILE_NAME
++#define OLSRD_GLOBAL_CONF_FILE	"/usr/local/etc/olsrd/" OLSRD_CONF_FILE_NAME
+ #endif /* OLSRD_GLOBAL_CONF_FILE */
+ 
+ #define	MAXMESSAGESIZE		1500    /* max broadcast size */
