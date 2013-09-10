@@ -1,4 +1,6 @@
 
+These files report how I build olsrd-0.6.5.4 on Linux Ubuntu 12.04.x.
+
 olsrd-NOTES-LINUX-0.6.5.4.txt
 -----------------------------
 How to build and install olsrd.
