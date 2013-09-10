@@ -6,7 +6,9 @@ LOCALESTATEDIR=/var/run/quagga
 
 # Put patches, conf, and init files in the ./misc directory;
 # extract quagga-0.99.21mr2.2.tar.gz and olsrd-0.6.5.4.tar.bz2;
+# put this script in the quagga-0.99.21mr2.2 directory;
 # cd quagga-0.99.21mr2.2
+# then run this script to build and install quagga-0.99.21mr2.2.
 
 # Some packages may need to be installed to successfully build the package:
 # on Ubuntu 12.04.x, gawk, libreadline6-dev, libpam0g-dev, and maybe others;
@@ -51,7 +53,7 @@ fi
 
 mkdir -p $LOCALESTATEDIR ; chown quagga. $LOCALESTATEDIR
 mkdir -p $PREFIX/init.d
-cp ../misc/quagga-mdr-init_d $PREFIX/init.d/quagga-mdr
+cp ../misc/quagga${SUFFIX}-init_d $PREFIX/init.d/quagga$SUFFIX
 chown -R root. $PREFIX/init.d ; chmod -R 755 $PREFIX/init.d
 
 mkdir $PREFIX/etc ; chown quagga.quaggavty $PREFIX/etc ; chmod 750 $PREFIX/etc
