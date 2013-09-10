@@ -1,0 +1,36 @@
+diff -Nrup olsrd-0.6.5.4.orig/Makefile.inc olsrd-0.6.5.4/Makefile.inc
+--- olsrd-0.6.5.4.orig/Makefile.inc	2013-05-16 18:37:09.000000000 +0200
++++ olsrd-0.6.5.4/Makefile.inc	2013-07-27 14:21:44.297704932 +0200
+@@ -57,15 +57,15 @@ TAGCMD ?=	etags
+ 
+ # target directories and names
+ DESTDIR  ?=
+-ETCDIR   ?= $(DESTDIR)/etc
+-USRDIR   ?= $(DESTDIR)/usr
+-INCLUDEDIR ?= $(DESTDIR)/usr/include
++EXENAME  ?= olsrd
++USRDIR   ?= $(DESTDIR)/usr/local
++ETCDIR   ?= $(USRDIR)/etc/$(EXENAME)
++INCLUDEDIR ?= $(USRDIR)/include
+ LIBDIR   ?= $(USRDIR)/lib
+ SBINDIR  ?= $(USRDIR)/sbin
+ SHAREDIR ?= $(USRDIR)/share
+ DOCDIR   ?= $(SHAREDIR)/doc
+-MANDIR   ?= $(SHAREDIR)/man
+-EXENAME  ?= olsrd
++MANDIR   ?= $(USRDIR)/man
+ CFGNAME  ?= $(EXENAME).conf
+ CFGFILE  ?= $(ETCDIR)/$(CFGNAME)
+ 
+diff -Nrup olsrd-0.6.5.4.orig/src/defs.h olsrd-0.6.5.4/src/defs.h
+--- olsrd-0.6.5.4.orig/src/defs.h	2013-05-16 18:37:09.000000000 +0200
++++ olsrd-0.6.5.4/src/defs.h	2013-07-27 14:21:36.941704755 +0200
+@@ -62,7 +62,7 @@ extern const char build_host[];
+ 
+ #ifndef OLSRD_GLOBAL_CONF_FILE
+ #define OLSRD_CONF_FILE_NAME	"olsrd.conf"
+-#define OLSRD_GLOBAL_CONF_FILE	"/etc/" OLSRD_CONF_FILE_NAME
++#define OLSRD_GLOBAL_CONF_FILE	"/usr/local/etc/olsrd/" OLSRD_CONF_FILE_NAME
+ #endif /* OLSRD_GLOBAL_CONF_FILE */
+ 
+ #define	MAXMESSAGESIZE		1500    /* max broadcast size */
