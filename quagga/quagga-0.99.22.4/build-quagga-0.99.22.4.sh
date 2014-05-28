@@ -54,7 +54,7 @@ mkdir -p $PREFIX/init.d
 cp ../misc/quagga${SUFFIX}-init_d $PREFIX/init.d/quagga$SUFFIX
 chown -R root. $PREFIX/init.d ; chmod -R 755 $PREFIX/init.d
 
-mkdir $PREFIX/etc ; chown quagga.quaggavty $PREFIX/etc ; chmod 750 $PREFIX/etc
+mkdir -p $PREFIX/etc ; chown quagga.quaggavty $PREFIX/etc ; chmod 750 $PREFIX/etc
 ( cd ../misc ; \
   cp daemons debian.conf zebra.conf ospfd.conf ospf6d.conf $PREFIX/etc )
 ( cd $PREFIX/etc ; chmod 640 * ; chown quagga. * ; \
